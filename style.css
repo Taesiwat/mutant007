@@ -319,6 +319,78 @@ main {
   flex-wrap: wrap;
 }
 
+/* ---------------- Nil-Mangkon Animation Section ---------------- */
+.nil-mangkon-wrap {
+  margin-top: 3.5rem;
+  width: 100%;
+}
+
+.nil-mangkon-card {
+  background-color: rgba(22, 29, 40, 0.75);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem 1rem;
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  transition: border-color var(--transition-fast);
+}
+
+.nil-mangkon-card:hover {
+  border-color: var(--border-focus);
+}
+
+.nil-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.85rem;
+  text-align: left;
+}
+
+.nil-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--accent-cyan);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.nil-dot {
+  width: 6px;
+  height: 6px;
+  background-color: var(--accent-cyan);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--accent-cyan);
+}
+
+.nil-title {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+}
+
+.nil-canvas-box {
+  width: 100%;
+  height: 200px;
+  position: relative;
+  border-radius: 8px;
+  background: radial-gradient(circle at 50% 100%, rgba(0, 229, 255, 0.09) 0%, rgba(9, 13, 19, 0.96) 80%);
+  border: 1px solid rgba(88, 166, 255, 0.18);
+  overflow: hidden;
+}
+
+#nil-mangkon-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
 .btn {
   display: inline-flex;
   align-items: center;
