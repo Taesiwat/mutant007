@@ -1,13 +1,174 @@
 // ===================================================================
 // Siwat Teimtad — Portfolio Scripts
-// Reading Progress, Copy Email, and X-Men DNA Warp Tunnel Background
+// Reading Progress, Copy Email, X-Men Background & TH/EN Language Switch
 // ===================================================================
 
 document.addEventListener('DOMContentLoaded', () => {
   initXMenTunnel();
   initReadingProgress();
   initEmailCopy();
+  initLanguageSwitcher();
 });
+
+// -------------------------------------------------------------
+// Translation Dictionary (EN / TH)
+// -------------------------------------------------------------
+const translations = {
+  en: {
+    brand_role: "Economist",
+    nav_projects: "Projects",
+    nav_about: "About",
+    nav_contact: "Contact",
+    nav_back: "← Back to Portfolio",
+    nav_next_essay: "Next Essay →",
+    nav_prev_essay: "← Previous Essay",
+    hero_badge: "Economic Research & Strategic Modeling",
+    hero_quote: '"Master Economics, the Simple Way."',
+    hero_sub: 'Welcome to the personal research archive of <span class="hero-author">Siwat Teimtad</span>. Demystifying complex market mechanisms, strategic incentives, and classical economic principles through rigorous, accessible analysis.',
+    hero_btn_essays: 'Read Research Essays ↓',
+    hero_btn_contact: 'Get in Touch',
+    projects_tag: '// Research Projects & Essays',
+    projects_title: 'Featured Economic Papers',
+    p1_badge: 'Classical Macroeconomics',
+    p1_title: 'Key Economic Concepts of <em>Economics in One Lesson</em> (Henry Hazlitt, 1946)',
+    p1_desc: 'A comprehensive inquiry into Hazlitt\'s timeless thesis. Traces the pivotal distinction between immediate visible effects and unseen, long-run secondary consequences across all societal groups—deconstructing the Broken Window fallacy, public works spending illusions, tariffs, price floors, and inflationary distortions.',
+    p1_read: 'Read Full Essay →',
+    p2_badge: 'Microeconomics & Strategy',
+    p2_title: 'Game Theory: Strategic Interactions, Equilibria, and Market Design',
+    p2_desc: 'A rigorous exploration of strategic decision-making in multi-agent environments. Explores von Neumann-Morgenstern utility, Nash Equilibria, extensive vs. normal form games, repeated Prisoner\'s Dilemmas and the Folk Theorem, information asymmetry (signaling and screening), and modern mechanism design for auctions.',
+    p2_read: 'Read Full Essay →',
+    tag_broken_window: 'Broken Window Fallacy',
+    tag_seen_unseen: 'Seen vs. Unseen',
+    tag_price_controls: 'Price Controls',
+    tag_inflation: 'Monetary Inflation',
+    tag_debt: 'Public Debt',
+    tag_nash: 'Nash Equilibrium',
+    tag_prisoners: "Prisoner's Dilemma",
+    tag_subgame: 'Subgame Perfection',
+    tag_asymmetry: 'Information Asymmetry',
+    tag_auction: 'Auction Theory',
+    about_tag: '// Background & Inquiry',
+    about_title: 'About Me',
+    about_p1: 'I am <strong>Siwat Teimtad</strong>, an economist dedicated to clarifying economic theory, market behavior, and strategic decision structures. My work bridges foundational economic philosophy with rigorous formal models to uncover how incentives truly operate in real-world systems.',
+    about_p2: 'Whether analyzing the unseen secondary consequences of fiscal policy or modeling competitive interactions through game-theoretic frameworks, my philosophy centers on clarity, intellectual honesty, and first-principles thinking: <em>Master Economics, the Simple Way.</em>',
+    about_p3: 'My primary research interests include <strong>Classical & Austrian Economics</strong>, <strong>Microeconomic Market Design</strong>, <strong>Strategic Form Game Theory</strong>, and <strong>Incentive Architectures in Modern Digital Economies</strong>.',
+    contact_card_title: 'Contact Details',
+    contact_label_name: 'Full Name',
+    contact_label_email: 'Direct Email',
+    contact_copy_btn: 'Copy',
+    contact_label_status: 'Status',
+    contact_status_text: 'Open to research collaborations & discussions',
+    footer_rights: 'All rights reserved.',
+    footer_quote: '"Master Economics, the Simple Way."',
+    footer_tech: 'Styled in <code>JetBrains Mono</code> • Hosted on GitHub Pages',
+    essay_author: 'Author:',
+    essay_published: 'Published:',
+    essay_words: 'Word Count:',
+    essay_return: '← Return to Portfolio',
+    toast_copied: 'Email copied to clipboard!'
+  },
+  th: {
+    brand_role: "นักเศรษฐศาสตร์",
+    nav_projects: "ผลงานวิจัย",
+    nav_about: "เกี่ยวกับฉัน",
+    nav_contact: "ติดต่อ",
+    nav_back: "← กลับสู่หน้าหลัก",
+    nav_next_essay: "บทความถัดไป →",
+    nav_prev_essay: "← บทความก่อนหน้า",
+    hero_badge: "การวิจัยทางเศรษฐศาสตร์และตัวแบบเชิงกลยุทธ์",
+    hero_quote: '"เข้าใจเศรษฐศาสตร์อย่างถ่องแท้ ในวิธีที่เรียบง่าย"',
+    hero_sub: 'ยินดีต้อนรับสู่คลังงานวิจัยของ <span class="hero-author">ศิวัตม์ เติมทัด</span> ถอดรหัสกลไกตลาดที่ซับซ้อน โครงสร้างสิ่งจูงใจเชิงกลยุทธ์ และหลักเศรษฐศาสตร์คลาสสิกด้วยการวิเคราะห์ที่เฉียบคมและเข้าใจง่าย',
+    hero_btn_essays: 'อ่านบทความวิจัย ↓',
+    hero_btn_contact: 'ติดต่อเรา',
+    projects_tag: '// ผลงานวิจัยและบทความทางเศรษฐศาสตร์',
+    projects_title: 'บทความเศรษฐศาสตร์คัดสรร',
+    p1_badge: 'เศรษฐศาสตร์มหภาคคลาสสิก',
+    p1_title: 'หัวใจสำคัญของ <em>Economics in One Lesson</em> (เฮนรี ฮาซลิตต์, 1946)',
+    p1_desc: 'การศึกษาวิจัยเชิงลึกต่อทฤษฎีอมตะของฮาซลิตต์ ชี้ชัดถึงความแตกต่างระหว่างผลลัพธ์ระยะสั้นที่มองเห็นได้ กับผลกระทบทางอ้อมระยะยาวที่มองไม่เห็นในทุกกลุ่มสังคม รื้อสร้างภาพลวงตาของหน้าต่างที่แตก การใช้จ่ายภาครัฐ กำแพงภาษี การควบคุมราคา และการบิดเบือนจากเงินเฟ้อ',
+    p1_read: 'อ่านบทความฉบับเต็ม →',
+    p2_badge: 'เศรษฐศาสตร์จุลภาคและกลยุทธ์',
+    p2_title: 'ทฤษฎีเกม: ปฏิสัมพันธ์เชิงกลยุทธ์ ดุลยภาพ และการออกแบบกลไกตลาด',
+    p2_desc: 'การศึกษาวิจัยการตัดสินใจเชิงกลยุทธ์ในระบบหลายตัวแสดง สำรวจอรรถประโยชน์วอน นอยมันน์-มอร์เกนสเติร์น, ดุลยภาพแนช, เกมรูปแบบตารางและต้นไม้, ปัญหานักโทษซ้ำซ้อนและทฤษฎีโฟล์ก, ข้อมูลอสมมาตร และการออกแบบกลไกการประมูลสมัยใหม่',
+    p2_read: 'อ่านบทความฉบับเต็ม →',
+    tag_broken_window: 'ภาพลวงตาหน้าต่างแตก',
+    tag_seen_unseen: 'สิ่งที่เห็น vs ที่มองไม่เห็น',
+    tag_price_controls: 'การควบคุมราคา',
+    tag_inflation: 'ภาวะเงินเฟ้อ',
+    tag_debt: 'หนี้สาธารณะ',
+    tag_nash: 'ดุลยภาพแนช',
+    tag_prisoners: 'ปัญหานักโทษ',
+    tag_subgame: 'ดุลยภาพเกมย่อยสมบูรณ์',
+    tag_asymmetry: 'ข้อมูลอสมมาตร',
+    tag_auction: 'ทฤษฎีการประมูล',
+    about_tag: '// ประวัติและความเชี่ยวชาญ',
+    about_title: 'เกี่ยวกับฉัน',
+    about_p1: 'ผมคือ <strong>ศิวัตม์ เติมทัด</strong> นักเศรษฐศาสตร์ผู้มุ่งมั่นในการถ่ายทอดทฤษฎีเศรษฐศาสตร์ พฤติกรรมตลาด และโครงสร้างการตัดสินใจเชิงกลยุทธ์ งานของผมเชื่อมโยงปรัชญาเศรษฐศาสตร์พื้นฐานเข้ากับตัวแบบเชิงคณิตศาสตร์เพื่อเปิดเผยว่าสิ่งจูงใจทำงานอย่างไรในโลกความเป็นจริง',
+    about_p2: 'ไม่ว่าจะเป็นการวิเคราะห์ผลกระทบทางอ้อมที่มองไม่เห็นของนโยบายการคลัง หรือการสร้างตัวแบบการแข่งขันผ่านทฤษฎีเกม ปรัชญาของผมยึดมั่นในความชัดเจน ความซื่อสัตย์ทางวิชาการ และหลักคิดจากแก่นแท้: <em>เข้าใจเศรษฐศาสตร์อย่างถ่องแท้ ในวิธีที่เรียบง่าย</em>',
+    about_p3: 'ความสนใจในการวิจัยหลัก ได้แก่ <strong>เศรษฐศาสตร์คลาสสิกและสำนักออสเตรีย</strong>, <strong>การออกแบบกลไกตลาด</strong>, <strong>ทฤษฎีเกมเชิงกลยุทธ์</strong> และ<strong>โครงสร้างสิ่งจูงใจในระบบเศรษฐกิจดิจิทัล</strong>',
+    contact_card_title: 'ข้อมูลติดต่อ',
+    contact_label_name: 'ชื่อ-นามสกุล',
+    contact_label_email: 'อีเมลติดต่อ',
+    contact_copy_btn: 'คัดลอก',
+    contact_label_status: 'สถานะ',
+    contact_status_text: 'พร้อมสำหรับความร่วมมือทางวิชาการและการแลกเปลี่ยนความคิดเห็น',
+    footer_rights: 'สงวนลิขสิทธิ์',
+    footer_quote: '"เข้าใจเศรษฐศาสตร์อย่างถ่องแท้ ในวิธีที่เรียบง่าย"',
+    footer_tech: 'ออกแบบด้วย <code>JetBrains Mono</code> • โฮสต์บน GitHub Pages',
+    essay_author: 'ผู้เขียน:',
+    essay_published: 'เผยแพร่:',
+    essay_words: 'จำนวนคำ:',
+    essay_return: '← กลับสู่หน้าหลัก',
+    toast_copied: 'คัดลอกอีเมลเรียบร้อยแล้ว!'
+  }
+};
+
+let currentLang = localStorage.getItem('portfolio_lang') || 'en';
+
+// -------------------------------------------------------------
+// Language Switcher Controller
+// -------------------------------------------------------------
+function initLanguageSwitcher() {
+  applyLanguage(currentLang);
+
+  const toggleBtns = document.querySelectorAll('.lang-switch-btn');
+  toggleBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      currentLang = currentLang === 'en' ? 'th' : 'en';
+      localStorage.setItem('portfolio_lang', currentLang);
+      applyLanguage(currentLang);
+    });
+  });
+}
+
+function applyLanguage(lang) {
+  const dict = translations[lang] || translations.en;
+
+  // Update translatable elements with data-i18n
+  document.querySelectorAll('[data-i18n]').forEach((el) => {
+    const key = el.getAttribute('data-i18n');
+    if (dict[key]) {
+      el.innerHTML = dict[key];
+    }
+  });
+
+  // Update button active classes
+  document.querySelectorAll('.lang-switch-btn').forEach((btn) => {
+    const enOpt = btn.querySelector('.lang-en');
+    const thOpt = btn.querySelector('.lang-th');
+    if (enOpt && thOpt) {
+      if (lang === 'th') {
+        thOpt.classList.add('active');
+        enOpt.classList.remove('active');
+      } else {
+        enOpt.classList.add('active');
+        thOpt.classList.remove('active');
+      }
+    }
+  });
+
+  // Adjust document lang attribute
+  document.documentElement.lang = lang;
+}
 
 // -------------------------------------------------------------
 // X-Men Opening Sequence: 3D DNA Helix & Cerebro Warp Tunnel
@@ -171,7 +332,6 @@ function initXMenTunnel() {
       const alpha = p1.alpha;
       if (alpha <= 0.02) continue;
 
-      // Backbone line
       ctx.beginPath();
       ctx.moveTo(p1.x, p1.y);
       ctx.lineTo(p2.x, p2.y);
@@ -180,7 +340,6 @@ function initXMenTunnel() {
       ctx.lineCap = 'round';
       ctx.stroke();
 
-      // Glowing node bead
       if (i % 2 === 0) {
         ctx.beginPath();
         ctx.arc(p1.x, p1.y, Math.max(1.4, (fov / p1.z) * 4.0), 0, Math.PI * 2);
@@ -237,18 +396,19 @@ function initReadingProgress() {
 // -------------------------------------------------------------
 function initEmailCopy() {
   const copyButtons = document.querySelectorAll('.copy-btn');
-  const toast = document.getElementById('toast');
 
   copyButtons.forEach((btn) => {
     btn.addEventListener('click', async () => {
       const email = btn.getAttribute('data-email') || 'dx@outlook.com';
+      const dict = translations[currentLang] || translations.en;
+
       try {
         await navigator.clipboard.writeText(email);
         const originalText = btn.textContent;
-        btn.textContent = 'Copied!';
+        btn.textContent = currentLang === 'th' ? 'คัดลอกแล้ว!' : 'Copied!';
         btn.classList.add('copied');
 
-        showToast(`Copied ${email} to clipboard!`);
+        showToast(dict.toast_copied || 'Email copied to clipboard!');
 
         setTimeout(() => {
           btn.textContent = originalText;
@@ -262,12 +422,13 @@ function initEmailCopy() {
         document.execCommand('copy');
         document.body.removeChild(textarea);
 
-        showToast(`Copied ${email} to clipboard!`);
+        showToast(dict.toast_copied || 'Email copied to clipboard!');
       }
     });
   });
 
   function showToast(message) {
+    const toast = document.getElementById('toast');
     if (!toast) return;
     toast.textContent = message;
     toast.classList.add('show');

@@ -3,7 +3,7 @@
    Font: JetBrains Mono | Theme: Modern High-Contrast Dark
    =================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Noto+Sans+Thai:wght@300;400;500;600;700&family=Sarabun:wght@300;400;500;600;700&display=swap');
 
 :root {
   --bg-canvas: #090d13;
@@ -27,7 +27,8 @@
   --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.5);
   --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.6);
   
-  --font-mono: 'JetBrains Mono', monospace;
+  --font-mono: 'JetBrains Mono', 'Sarabun', 'Noto Sans Thai', monospace;
+  --font-thai: 'Sarabun', 'Noto Sans Thai', sans-serif;
   --max-w-content: 1100px;
   --max-w-reading: 820px;
   --transition-fast: 0.18s ease;
@@ -190,6 +191,43 @@ body::before {
 .nav-btn:hover {
   background-color: var(--accent-cyan);
   color: var(--bg-canvas);
+}
+
+.lang-switch-btn {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-focus);
+  color: var(--text-main);
+  padding: 0.35rem 0.65rem;
+  border-radius: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  transition: all var(--transition-fast);
+  user-select: none;
+}
+
+.lang-switch-btn:hover {
+  border-color: var(--accent-cyan);
+  background-color: var(--bg-card-hover);
+}
+
+.lang-switch-btn .lang-opt {
+  color: var(--text-muted);
+  font-weight: 500;
+  transition: color var(--transition-fast);
+}
+
+.lang-switch-btn .lang-opt.active {
+  color: var(--accent-cyan);
+  font-weight: 700;
+}
+
+.lang-switch-btn .lang-sep {
+  color: var(--border-focus);
+  font-size: 0.72rem;
 }
 
 /* ---------------- Layout Containers ---------------- */

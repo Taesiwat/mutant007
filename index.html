@@ -18,15 +18,21 @@
         <img src="logan.png" alt="Siwat Teimtad Logo" class="brand-logo">
         <div class="brand-text">
           <span class="brand-name">Siwat Teimtad</span>
-          <span class="brand-role">Economist</span>
+          <span class="brand-role" data-i18n="brand_role">Economist</span>
         </div>
       </a>
-      <nav>
+      <nav style="display:flex; align-items:center; gap: 1rem;">
         <ul class="nav-links">
-          <li><a href="#projects" class="nav-link">Projects</a></li>
-          <li><a href="#about" class="nav-link">About</a></li>
-          <li><a href="#contact" class="nav-btn">Contact</a></li>
+          <li><a href="#projects" class="nav-link" data-i18n="nav_projects">Projects</a></li>
+          <li><a href="#about" class="nav-link" data-i18n="nav_about">About</a></li>
+          <li><a href="#contact" class="nav-btn" data-i18n="nav_contact">Contact</a></li>
         </ul>
+        <!-- Language Switch Button -->
+        <button id="lang-toggle" class="lang-switch-btn" aria-label="Switch Language" title="Switch English / Thai">
+          <span class="lang-opt lang-en active">EN</span>
+          <span class="lang-sep">/</span>
+          <span class="lang-opt lang-th">TH</span>
+        </button>
       </nav>
     </div>
   </header>
@@ -37,22 +43,21 @@
       <div class="hero-inner">
         <div class="hero-badge">
           <span class="pulse-dot"></span>
-          <span>Economic Research & Strategic Modeling</span>
+          <span data-i18n="hero_badge">Economic Research & Strategic Modeling</span>
         </div>
         <div class="hero-quote-wrap">
-          <h1 class="hero-quote">"Master Economics, the Simple Way."</h1>
+          <h1 class="hero-quote" data-i18n="hero_quote">"Master Economics, the Simple Way."</h1>
         </div>
-        <p class="hero-sub">
+        <p class="hero-sub" data-i18n="hero_sub">
           Welcome to the personal research archive of <span class="hero-author">Siwat Teimtad</span>. 
           Demystifying complex market mechanisms, strategic incentives, and classical economic principles through rigorous, accessible analysis.
         </p>
         <div class="hero-actions">
           <a href="#projects" class="btn btn-primary">
-            <span>Read Research Essays</span>
-            <span>&darr;</span>
+            <span data-i18n="hero_btn_essays">Read Research Essays ↓</span>
           </a>
           <a href="#contact" class="btn btn-outline">
-            <span>Get in Touch</span>
+            <span data-i18n="hero_btn_contact">Get in Touch</span>
           </a>
         </div>
       </div>
@@ -61,8 +66,8 @@
     <!-- Projects Section -->
     <section id="projects" class="section-container">
       <div class="section-header">
-        <div class="section-tag">// Research Projects & Essays</div>
-        <h2 class="section-title">Featured Economic Papers</h2>
+        <div class="section-tag" data-i18n="projects_tag">// Research Projects & Essays</div>
+        <h2 class="section-title" data-i18n="projects_title">Featured Economic Papers</h2>
       </div>
 
       <div class="projects-grid">
@@ -70,25 +75,24 @@
         <article class="project-card">
           <div>
             <div class="project-meta">
-              <span class="project-badge badge-hazlitt">Classical Macroeconomics</span>
+              <span class="project-badge badge-hazlitt" data-i18n="p1_badge">Classical Macroeconomics</span>
               <span class="project-words">1,200+ words</span>
             </div>
-            <h3 class="project-title">Key Economic Concepts of <em>Economics in One Lesson</em> (Henry Hazlitt, 1946)</h3>
-            <p class="project-desc">
+            <h3 class="project-title" data-i18n="p1_title">Key Economic Concepts of <em>Economics in One Lesson</em> (Henry Hazlitt, 1946)</h3>
+            <p class="project-desc" data-i18n="p1_desc">
               A comprehensive inquiry into Hazlitt's timeless thesis. Traces the pivotal distinction between immediate visible effects and unseen, long-run secondary consequences across all societal groups—deconstructing the Broken Window fallacy, public works spending illusions, tariffs, price floors, and inflationary distortions.
             </p>
             <div class="project-topics">
-              <span class="topic-tag">Broken Window Fallacy</span>
-              <span class="topic-tag">Seen vs. Unseen</span>
-              <span class="topic-tag">Price Controls</span>
-              <span class="topic-tag">Monetary Inflation</span>
-              <span class="topic-tag">Public Debt</span>
+              <span class="topic-tag" data-i18n="tag_broken_window">Broken Window Fallacy</span>
+              <span class="topic-tag" data-i18n="tag_seen_unseen">Seen vs. Unseen</span>
+              <span class="topic-tag" data-i18n="tag_price_controls">Price Controls</span>
+              <span class="topic-tag" data-i18n="tag_inflation">Monetary Inflation</span>
+              <span class="topic-tag" data-i18n="tag_debt">Public Debt</span>
             </div>
           </div>
           <div class="project-footer">
-            <a href="hazlitt.html" class="read-btn">
-              <span>Read Full Essay</span>
-              <span>&rarr;</span>
+            <a href="hazlitt.html" class="read-btn" data-i18n="p1_read">
+              Read Full Essay &rarr;
             </a>
           </div>
         </article>
@@ -97,25 +101,24 @@
         <article class="project-card">
           <div>
             <div class="project-meta">
-              <span class="project-badge badge-game">Microeconomics & Strategy</span>
+              <span class="project-badge badge-game" data-i18n="p2_badge">Microeconomics & Strategy</span>
               <span class="project-words">1,200+ words</span>
             </div>
-            <h3 class="project-title">Game Theory: Strategic Interactions, Equilibria, and Market Design</h3>
-            <p class="project-desc">
+            <h3 class="project-title" data-i18n="p2_title">Game Theory: Strategic Interactions, Equilibria, and Market Design</h3>
+            <p class="project-desc" data-i18n="p2_desc">
               A rigorous exploration of strategic decision-making in multi-agent environments. Explores von Neumann-Morgenstern utility, Nash Equilibria, extensive vs. normal form games, repeated Prisoner's Dilemmas and the Folk Theorem, information asymmetry (signaling and screening), and modern mechanism design for auctions.
             </p>
             <div class="project-topics">
-              <span class="topic-tag">Nash Equilibrium</span>
-              <span class="topic-tag">Prisoner's Dilemma</span>
-              <span class="topic-tag">Subgame Perfection</span>
-              <span class="topic-tag">Information Asymmetry</span>
-              <span class="topic-tag">Auction Theory</span>
+              <span class="topic-tag" data-i18n="tag_nash">Nash Equilibrium</span>
+              <span class="topic-tag" data-i18n="tag_prisoners">Prisoner's Dilemma</span>
+              <span class="topic-tag" data-i18n="tag_subgame">Subgame Perfection</span>
+              <span class="topic-tag" data-i18n="tag_asymmetry">Information Asymmetry</span>
+              <span class="topic-tag" data-i18n="tag_auction">Auction Theory</span>
             </div>
           </div>
           <div class="project-footer">
-            <a href="game-theory.html" class="read-btn">
-              <span>Read Full Essay</span>
-              <span>&rarr;</span>
+            <a href="game-theory.html" class="read-btn" data-i18n="p2_read">
+              Read Full Essay &rarr;
             </a>
           </div>
         </article>
@@ -126,44 +129,44 @@
     <section id="about" class="about-section">
       <div class="section-container">
         <div class="section-header">
-          <div class="section-tag">// Background & Inquiry</div>
-          <h2 class="section-title">About Me</h2>
+          <div class="section-tag" data-i18n="about_tag">// Background & Inquiry</div>
+          <h2 class="section-title" data-i18n="about_title">About Me</h2>
         </div>
 
         <div class="about-grid">
           <div class="about-bio">
-            <p>
+            <p data-i18n="about_p1">
               I am <strong>Siwat Teimtad</strong>, an economist dedicated to clarifying economic theory, market behavior, and strategic decision structures. My work bridges foundational economic philosophy with rigorous formal models to uncover how incentives truly operate in real-world systems.
             </p>
-            <p>
+            <p data-i18n="about_p2">
               Whether analyzing the unseen secondary consequences of fiscal policy or modeling competitive interactions through game-theoretic frameworks, my philosophy centers on clarity, intellectual honesty, and first-principles thinking: <em>Master Economics, the Simple Way.</em>
             </p>
-            <p>
+            <p data-i18n="about_p3">
               My primary research interests include <strong>Classical & Austrian Economics</strong>, <strong>Microeconomic Market Design</strong>, <strong>Strategic Form Game Theory</strong>, and <strong>Incentive Architectures in Modern Digital Economies</strong>.
             </p>
           </div>
 
           <div id="contact" class="contact-card">
-            <div class="contact-card-title">Contact Details</div>
+            <div class="contact-card-title" data-i18n="contact_card_title">Contact Details</div>
             
             <div class="contact-item">
-              <div class="contact-label">Full Name</div>
+              <div class="contact-label" data-i18n="contact_label_name">Full Name</div>
               <div class="contact-value">Siwat Teimtad</div>
             </div>
 
             <div class="contact-item">
-              <div class="contact-label">Direct Email</div>
+              <div class="contact-label" data-i18n="contact_label_email">Direct Email</div>
               <div class="email-box">
                 <a href="mailto:dx@outlook.com" class="email-text">dx@outlook.com</a>
-                <button class="copy-btn" data-email="dx@outlook.com" title="Copy email address">Copy</button>
+                <button class="copy-btn" data-email="dx@outlook.com" title="Copy email address" data-i18n="contact_copy_btn">Copy</button>
               </div>
             </div>
 
             <div class="contact-item" style="margin-bottom: 0; margin-top: 1.5rem;">
-              <div class="contact-label">Status</div>
+              <div class="contact-label" data-i18n="contact_label_status">Status</div>
               <div style="font-size: 0.85rem; color: var(--accent-emerald); display: flex; align-items: center; gap: 0.5rem;">
                 <span style="display:inline-block; width:6px; height:6px; background:#3fb950; border-radius:50%;"></span>
-                Open to research collaborations & discussions
+                <span data-i18n="contact_status_text">Open to research collaborations & discussions</span>
               </div>
             </div>
           </div>
@@ -176,12 +179,12 @@
   <footer class="site-footer">
     <div class="footer-inner">
       <div>
-        &copy; 2026 <strong>Siwat Teimtad</strong>. All rights reserved.
+        &copy; 2026 <strong>Siwat Teimtad</strong>. <span data-i18n="footer_rights">All rights reserved.</span>
       </div>
-      <div class="footer-quote">
+      <div class="footer-quote" data-i18n="footer_quote">
         "Master Economics, the Simple Way."
       </div>
-      <div>
+      <div data-i18n="footer_tech">
         Styled in <code>JetBrains Mono</code> &bull; Hosted on GitHub Pages
       </div>
     </div>

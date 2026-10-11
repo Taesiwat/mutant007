@@ -17,14 +17,19 @@
         <img src="logan.png" alt="Siwat Teimtad Logo" class="brand-logo">
         <div class="brand-text">
           <span class="brand-name">Siwat Teimtad</span>
-          <span class="brand-role">Economist</span>
+          <span class="brand-role" data-i18n="brand_role">Economist</span>
         </div>
       </a>
-      <nav>
+      <nav style="display:flex; align-items:center; gap: 1rem;">
         <ul class="nav-links">
-          <li><a href="index.html#projects" class="nav-link">&larr; Back to Portfolio</a></li>
-          <li><a href="hazlitt.html" class="nav-link">&larr; Previous Essay</a></li>
+          <li><a href="index.html#projects" class="nav-link" data-i18n="nav_back">&larr; Back to Portfolio</a></li>
+          <li><a href="hazlitt.html" class="nav-link" data-i18n="nav_prev_essay">&larr; Previous Essay</a></li>
         </ul>
+        <button id="lang-toggle" class="lang-switch-btn" aria-label="Switch Language" title="Switch English / Thai">
+          <span class="lang-opt lang-en active">EN</span>
+          <span class="lang-sep">/</span>
+          <span class="lang-opt lang-th">TH</span>
+        </button>
       </nav>
     </div>
   </header>
@@ -33,20 +38,20 @@
     <div class="reading-container">
       <article>
         <header class="article-header">
-          <a href="index.html#projects" class="back-link">&larr; Back to Projects Overview</a>
+          <a href="index.html#projects" class="back-link" data-i18n="nav_back">&larr; Back to Projects Overview</a>
           <div class="project-badge badge-game" style="display:inline-block; margin-bottom: 0.75rem;">Research Paper &bull; Microeconomics & Strategy</div>
           <h1 class="article-title">Game Theory: Strategic Interactions, Equilibria, and Market Design</h1>
           <div class="article-meta-row">
             <div class="article-meta-item">
-              <span>Author:</span>
+              <span data-i18n="essay_author">Author:</span>
               <strong>Siwat Teimtad</strong>
             </div>
             <div class="article-meta-item">
-              <span>Published:</span>
+              <span data-i18n="essay_published">Published:</span>
               <span>October 2026</span>
             </div>
             <div class="article-meta-item">
-              <span>Word Count:</span>
+              <span data-i18n="essay_words">Word Count:</span>
               <span>~1,500 words</span>
             </div>
           </div>
@@ -194,8 +199,8 @@
         </div>
 
         <footer class="article-nav-bottom">
-          <a href="hazlitt.html" class="btn btn-outline">&larr; Read Hazlitt Essay</a>
-          <a href="index.html" class="btn btn-primary">Return to Portfolio &uarr;</a>
+          <a href="hazlitt.html" class="btn btn-outline" data-i18n="nav_prev_essay">&larr; Read Hazlitt Essay</a>
+          <a href="index.html" class="btn btn-primary" data-i18n="essay_return">Return to Portfolio &uarr;</a>
         </footer>
       </article>
     </div>
@@ -203,9 +208,9 @@
 
   <footer class="site-footer">
     <div class="footer-inner">
-      <div>&copy; 2026 <strong>Siwat Teimtad</strong>. All rights reserved.</div>
-      <div class="footer-quote">"Master Economics, the Simple Way."</div>
-      <div>Styled in <code>JetBrains Mono</code> &bull; Hosted on GitHub Pages</div>
+      <div>&copy; 2026 <strong>Siwat Teimtad</strong>. <span data-i18n="footer_rights">All rights reserved.</span></div>
+      <div class="footer-quote" data-i18n="footer_quote">"Master Economics, the Simple Way."</div>
+      <div data-i18n="footer_tech">Styled in <code>JetBrains Mono</code> &bull; Hosted on GitHub Pages</div>
     </div>
   </footer>
 
